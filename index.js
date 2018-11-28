@@ -49,7 +49,7 @@ app.get('/', function (request, response) {
     var ruta = path.join(__dirname, 'public/views/index.handlebars');
     // var contexto = {}
     //   };
-    response.render('index.handlebars');
+    response.render(ruta);
 });
 
 app.get('/optics', function (request, response) {
