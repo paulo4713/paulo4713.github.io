@@ -46,8 +46,8 @@ app.use(express.json());
 //Se hace un llamado por página
 app.get('/', function (request, response) {
     //para llamar algun archivo se debe usar path.join(__dirname, 'ruta del archivo')
-    //var ruta = path.join(__dirname, 'public/index.html');
-    // var contexto = {
+    var ruta = path.join(__dirname, 'public/views/index.handlebars');
+    // var contexto = {}
     //   };
     response.render('index');
 });
