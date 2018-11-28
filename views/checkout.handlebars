@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {{>head}}
+    <link rel="stylesheet" href="/styles/checkout_style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        {{>header}}
+    </div>
+    <ul>
+        {{#each carrito}}
+        <li>{{name}}</li>
+        {{/each}}
+    </ul>
+
+    <div class="breadcrumbs">
+        <div class="content">
+            <div class="breadcrumbs_wrapper">
+                <span><a href="/">Inicio</a> <i class="fas fa-angle-right"></i> <a href="/optics">Óptica</a> <i class="fas fa-angle-right"></i>
+                    <a href="/checkout"><strong>Checkout</strong></a></span>
+                <div class="carrito_wrap">
+                    <a href="/checkout">
+                        <span class="checkout">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="quantity"></span>
+                        </span>
+                    </a>
+                    <span class="carrito"></span>
+                    <span class="clear_carrito"><i class="fas fa-trash-alt"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="checkout_wrap">
+        <div class="content">
+            <div class="empty_cart">
+                <h1>Tu carrito esta vacío.</h1>
+                <p>Empieza a comprar aquí</p>
+                <a href="/optics"><button>Agregar productos</button></a>
+            </div>
+            <div class="cart_list_wrap">
+                <table class="cart_list">
+                    <tr>
+                        <th class="item_img">Imagen de Referencia</th>
+                        <th class="item_name">Producto</th>
+                        <th class="item_price">Precio</th>
+                    </tr>
+                </table>
+                <table class="cart_list total">
+                    <tr>
+                        <td class="item_name">Total</td>
+                        <td class="item_price totalCompra"></td>
+                    </tr>
+                </table>
+                <a href="/optics"><button>Agrega más productos</button></a>
+                <button class="pay_btn">Pagar</button>
+            </div>
+            <div class="checkout_form">
+                <form action="">
+                   Nombre <input type="text">
+                   Cedula <input type="text">
+                   Medio de Pago <input type="text">
+                   Dirección de Envío: <input type="text">
+                   <button>Confirmar Compra</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <ul class="lista-carrito"></ul>
+
+    <div class="wrapper">
+        {{>footer}}
+    </div>
+
+
+    <script src="/scripts/cart.js"></script>
+    <script src="/scripts/checkout.js"></script>
+</body>
+
+</html>

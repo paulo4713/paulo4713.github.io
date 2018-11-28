@@ -1,0 +1,162 @@
+.optics_products {
+  background: #fff;
+  padding: 40px 0;
+  .content {
+    display: flex;
+    .filter_column {
+      width: 20%;
+      padding-right: 2%;
+      .filters_heading {
+        background: #00c7d3;
+        font-size: 16px;
+        padding: 15px;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 0;
+        color: #fff;
+        letter-spacing: 1.36px;
+      }
+      .filterbox {
+        font-size: 14px;
+        background: #f7f7f7;
+        .list-group-items {
+          padding: 15px;
+          .checkbox {
+            padding: 4px;
+          }
+        }
+        .box-footer {
+          text-align: center;
+
+          button {
+            padding: 15px 58px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            background-color: #00c7d3;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .optics_products__content {
+      width: 80%;
+
+      .order_bar {
+        background: #f7f7f7;
+        padding: 12px 0;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #666666;
+
+        .order_bar__sort_by_wrapper {
+          display: flex;
+          justify-content: flex-end;
+
+          .form-control {
+            background: #fff;
+            margin: 0 10px;
+            padding: 5px 10px;
+            -webkit-appearance: menulist-button;
+          }
+          .sort_by_wrapper__label {
+            padding: 5px 0;
+          }
+        }
+      }
+
+      .products_list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        .product_box {
+          flex-shrink: 1;
+          flex-basis: auto;
+          text-align: center;
+          width: 260px;
+          margin-bottom: 20px;
+          transition: 0.3s;
+          border-radius: 10px;
+          padding: 30px 0;
+
+          .product_box__image {
+            position: relative;
+            img {
+              &:last-child {
+                position: absolute;
+                left: 10%;
+                opacity: 0;
+                transition: 0.5s;
+
+                &:hover {
+                  opacity: 1;
+                  transition: 0.3s;
+                }
+              }
+            }
+          }
+
+          &:hover {
+            box-shadow: 0 0 10px #ccc;
+            transition: 0.5s;
+
+            button {
+              background: #00c7d3;
+              color: #fff;
+            }
+          }
+
+          img {
+            width: 80%;
+          }
+          .product_box__caption * {
+            margin: 6px 0;
+          }
+          .glass_reference {
+            font-size: 14px;
+            a {
+              color: #4d4d4d !important;
+            }
+          }
+          .price {
+            color: #00c7d3;
+            font-weight: 900;
+            letter-spacing: 1px;
+
+            &:before {
+              content: "$";
+            }
+          }
+
+          button {
+            padding: 15px 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+$width-name: max-device-width;
+$target-width: 420px;
+
+@media screen and ($width-name: $target-width) {
+  .filter_column {
+    display: none;
+  }
+
+  .optics_products__content {
+    width: 90% !important;
+    margin: 0 auto;
+    .product_box {
+
+      width: 90% !important;
+
+    }
+  }
+  .products_list {
+    flex-flow: column wrap !important;
+    align-items: center;
+  }
+}
