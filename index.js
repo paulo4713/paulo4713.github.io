@@ -10,7 +10,7 @@ var assert = require('assert');
 //Asociamos express a la app
 const app = express();
 
-const url = 'mongodb+srv://paulorlaurao:<PASSWORD>@cluster0-ehigx.mongodb.net/test?retryWrites=true';
+const url = 'mongodb+srv://paulorlaurao:<PASSWORD>@cluster0-ehigx.mongodb.net/tienda';
 const dbName = 'tienda';
 var db = null;
 
