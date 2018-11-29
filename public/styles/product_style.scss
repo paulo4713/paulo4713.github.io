@@ -1,3 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
 .product_detail_wrap {
   background-color: #fff;
   .product_detail {
@@ -70,6 +81,149 @@
           color: #fff;
         }
       }
+    }
+  }
+
+  .view360_section {
+    text-align: center;
+
+    h1 {
+      font-size: 26px;
+      margin: 5px 0;
+    }
+
+    .titulo360 {
+      display: inline-flex;
+      flex-flow: row wrap;
+      align-items: center;
+      width: 330px;
+      justify-content: center;
+    }
+
+    .icono_360 {
+      height: 17px;
+    }
+
+    .product_360 {
+      border: 2px solid #00c8d5;
+      border-radius: 25px;
+    }
+  }
+
+  .zoom_section {
+    text-align: center;
+    height: 50px;
+    transition: all 0.8s ease-out;
+
+    &.animated {
+      height: 550px;
+      .tryOn_button {
+        margin: 0 auto;
+      }
+    }
+
+    .putglasses {
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 0px;
+      .glasses {
+        text-align: center;
+        position: relative;
+        top: -390px;
+        z-index: -1;
+        opacity: 0;
+        transition: all 1s ease-out;
+
+        &.animated {
+          opacity: 1;
+          z-index: 0;
+          top: 0px;
+        }
+        img {
+          width: 100%;
+        }
+      }
+    }
+    
+  }
+}
+
+.baslider_section {
+  opacity: 0;
+  padding-top: 100px;
+  
+  .titulos {
+    ul {
+      display: inline-flex;
+      flex-flow: row;
+      justify-content: space-between;
+      width: 720px;
+      h1 {
+        color: #00c7d3;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .ba-slider {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #00c8d5;
+  border-radius: 25px;
+    img {
+      width: 100%;
+      display: block;
+    }
+    .resize {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+    }
+    .handle {
+      /* Thin line seperator */
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      margin-left: -2px;
+      background: rgba(0, 0, 0, 0.5);
+      &::after {
+        /* Big orange knob  */
+        position: absolute;
+        top: 50%;
+        width: 64px;
+        height: 64px;
+        margin: -32px 0 0 -32px;
+
+        content: "\21d4";
+        color: white;
+        font-weight: bold;
+        font-size: 36px;
+        text-align: center;
+        line-height: 64px;
+
+        background: #00c7d3; /* @orange */
+        border: 1px solid #00c7d3; /* darken(@orange, 5%) */
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3),
+          inset 0 2px 0 rgba(255, 255, 255, 0.5),
+          inset 0 60px 50px -30px #50f5ff; /* lighten(@orange, 20%)*/
+      }
+    }
+  }
+
+  .draggable {
+    &::after {
+      width: 48px;
+      height: 48px;
+      margin: -24px 0 0 -24px;
+      line-height: 48px;
+      font-size: 30px;
     }
   }
 }

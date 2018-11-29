@@ -46,10 +46,10 @@ app.use(express.json());
 //Se hace un llamado por página
 app.get('/', function (request, response) {
     //para llamar algun archivo se debe usar path.join(__dirname, 'ruta del archivo')
-    var ruta = path.join('/views/index.handlebars');
+    //var ruta = path.join('/views/index.handlebars');
     // var contexto = {}
     //   };
-    response.render(ruta);
+    response.render('index');
 });
 
 app.get('/optics', function (request, response) {
