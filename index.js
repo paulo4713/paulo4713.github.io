@@ -10,7 +10,7 @@ var assert = require('assert');
 //Asociamos express a la app
 const app = express();
 
-const url = 'mongodb+srv://paulorlaurao:<PASSWORD>@cluster0-ehigx.mongodb.net/tienda';
+const url = 'mongodb+srv://cluster0-ehigx.mongodb.net/tienda';
 const dbName = 'tienda';
 var db = null;
 
@@ -23,7 +23,9 @@ MongoClient.connect(url,
 
     },
     function (err, client) {
+
         if (err) throw err;
+
         db = client.db(dbName);
         app.listen(process.env.PORT || 1234)
     }
