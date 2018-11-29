@@ -10,12 +10,26 @@ var assert = require('assert');
 //Asociamos express a la app
 const app = express();
 
-const url = 'mongodb://localhost:27017';
-const dbName = 'tayle-web';
-
-const client = new MongoClient(url);
+const url = 'mongodb+srv://paulorlaurao:<PASSWORD>@cluster0-ehigx.mongodb.net/test?retryWrites=true';
+const dbName = 'tienda';
 var db = null;
 
+MongoClient.connect(url,
+    {
+        auth: {
+            user: 'paulorlaurao',
+            password: 'LaContraseñaDeWeb123'
+        }
+
+    },
+    function (err, client) {
+        if (err) throw err;
+        db = client.db(dbName);
+        app.listen(process.env.PORT || 1234)
+    }
+);
+
+/*
 client.connect(function (err) {
     if (err) {
         console.error(err);
@@ -23,6 +37,7 @@ client.connect(function (err) {
     }
     db = client.db(dbName);
 });
+*/
 
 //configuramos nuestro servidor para archivos locales
 app.use(express.static('public'));
@@ -34,9 +49,9 @@ app.engine('handlebars', hbs());
 app.set('view engine', 'handlebars');
 
 var bodyParser = require('body-parser');
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
+    extended: true
 }));
 app.use(express.json());
 
@@ -54,9 +69,9 @@ app.get('/', function (request, response) {
 
 app.get('/optics', function (request, response) {
     const collection = db.collection('productos');
-    
-    collection.find({}).toArray(function(err, docs) {
-        if (err){
+
+    collection.find({}).toArray(function (err, docs) {
+        if (err) {
             console.error(err);
             response.send(err);
             return;
@@ -74,8 +89,8 @@ app.get('/optics', function (request, response) {
 app.get('/optics/:producto', function (request, response) {
     var prodName = request.params.producto;
     const collection = db.collection('productos');
-    collection.find({"name": prodName}).toArray(function(err, docs) {
-        if (err){
+    collection.find({ "name": prodName }).toArray(function (err, docs) {
+        if (err) {
             console.error(err);
             response.send(err);
             return;
@@ -83,7 +98,7 @@ app.get('/optics/:producto', function (request, response) {
         var contexto = {
             productos: docs,
         };
-        
+
         response.render('product', contexto);
     });
 });
@@ -91,17 +106,17 @@ app.get('/optics/:producto', function (request, response) {
 
 var carrito = [];
 
-app.post('/api/agregarAlCarrito', function(req, res){
+app.post('/api/agregarAlCarrito', function (req, res) {
 
-    
+
 
     let name = req.body.name;
     console.log(name);
 
     const collection = db.collection('productos');
 
-    let glasses = collection.find({"name": name}).toArray(function(err, docs) {
-        if (err){
+    let glasses = collection.find({ "name": name }).toArray(function (err, docs) {
+        if (err) {
             console.error(err);
             response.send(err);
             return;
@@ -111,11 +126,11 @@ app.post('/api/agregarAlCarrito', function(req, res){
         res.send(carrito);
     });
 
-    
+
 });
 
 
-app.get('/checkout', function(req, res){
+app.get('/checkout', function (req, res) {
     var contexto = {
         carrito: carrito,
     };
